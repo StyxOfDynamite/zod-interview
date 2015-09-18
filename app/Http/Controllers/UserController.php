@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 use DB;
 use Log;
@@ -29,10 +30,7 @@ class UserController extends Controller {
             'forename' => 'required',
             'surname' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'contact_number' => 'required',
-            'right_to_work' => 'required',
-            'country' => 'required'
+            'password' => 'required'
         ]);
         if ($validator->fails()) {
             Log::warning('validator failed, redirecting to entry form');
@@ -43,6 +41,12 @@ class UserController extends Controller {
         $user->forename = $request->input('forename');
         $user->surname = $request->input('surname');
         $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->contact_number = $request->input('contact_number');
+        $user->right_to_work = $request->input('right_to_work') ? true : false;
+        $user->country = $request->input('country');
+        $user->alerts = $request->input('alerts') ? true : false;
+
         $user->save();
         return redirect()->route('user.index');
     }
