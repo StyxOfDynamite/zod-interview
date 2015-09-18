@@ -22,7 +22,7 @@
                             </a>
                         </td>
                         <td>{{ $user->surname }}</td>
-                        <td>{{ $user->contact_number }}</td>
+                        <td>{{ $user->contact_number }}
                         <td>
                             <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-info btn-sm">Edit</a>
                             <a href="{{ route('user.delete', ['id' => $user->id]) }}" class="btn btn-danger btn-sm">Delete</a>

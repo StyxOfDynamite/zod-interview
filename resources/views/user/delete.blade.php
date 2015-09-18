@@ -7,7 +7,7 @@
                 Delete candidate
             </div>
             <div class="panel-body">
-                <p>Are you sure to delete candidate, named <del>{{ $user->name }}</del>?</p>
+                <p>Are you sure to delete candidate, named <del>{{ $user->forename }}</del>?</p>
             </div>
             <div class="panel-footer">
                 <button type="submit" class="btn btn-sm btn-danger btn-addon"><i class="glyphicon glyphicon-ok"></i>Delete</button>
