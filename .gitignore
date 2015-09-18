@@ -2,4 +2,4 @@
 .env
 /.idea
 .DS_Store
-*~
+mysql_dump.txt
