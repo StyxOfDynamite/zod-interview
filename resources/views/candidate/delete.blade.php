@@ -2,7 +2,7 @@
 @section('content')
     <form class="form-horizontal" role="form" method="POST" action="{{ route('candidate.update', ['id' => $candidate->id]) }}">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value=" {{ csrf_token() }}">
+        <input type="text" name="_token" id="_token" class="hidden" value="{{ csrf_token() }}">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Delete candidate
