@@ -23,6 +23,7 @@ php artisan migrate
 * Server-side validation.
 * Password hashing.
 * Candidate removal.
+* Session storage in database.
 * Candidate details edit.
 
 ## Todo
@@ -30,4 +31,3 @@ php artisan migrate
 * Add sector(s) to registration form
 * Add country and selection region to registration form
 * Add file upload for resume / c.v
-* Client side validation feedback
