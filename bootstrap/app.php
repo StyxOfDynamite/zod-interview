@@ -17,7 +17,7 @@ Dotenv::load(__DIR__.'/../');
 
 $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
-);
+    );
 
 $app->withFacades();
 
@@ -37,12 +37,12 @@ $app->withEloquent();
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
-);
+    );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
-);
+    );
 
 /*
 |--------------------------------------------------------------------------
@@ -56,9 +56,12 @@ $app->singleton(
 */
 
 $app->middleware([
-     Illuminate\Session\Middleware\StartSession::class,
-     Illuminate\View\Middleware\ShareErrorsFromSession::class
-]);
+  'Illuminate\Session\Middleware\StartSession',
+  'Illuminate\Cookie\Middleware\EncryptCookies',
+  'Laravel\Lumen\Http\Middleware\VerifyCsrfToken',
+  'Illuminate\View\Middleware\ShareErrorsFromSession'
+  ]);
+
 
 // $app->routeMiddleware([
 

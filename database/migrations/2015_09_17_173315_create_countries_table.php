@@ -13,8 +13,14 @@ class CreateCountriesTable extends Migration
     public function up()
     {
         Schema::create('countries', function (Blueprint $table) {
+            //country details
             $table->increments('id');
             $table->string('country', 30);
+
+            //link on foreign key
+            $table->integer('candidate_id')->unsigned();
+
+            //timestamps
             $table->timestamps();
         });
     }

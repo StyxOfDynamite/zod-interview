@@ -25,7 +25,7 @@ php artisan migrate
 * Candidate removal.
 * Session storage in database.
 * Candidate details edit.
-
+* CSRF mitigation via encrypted cookie.
 ## Todo
 
 * Add sector(s) to registration form

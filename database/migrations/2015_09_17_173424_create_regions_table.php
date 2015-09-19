@@ -13,8 +13,14 @@ class CreateRegionsTable extends Migration
     public function up()
     {
         Schema::create('regions', function (Blueprint $table) {
+            //region details
             $table->increments('id');
             $table->string('region');
+
+            //link on foreign key
+            $table->integer('country_id')->unsigned();
+            
+            //timestamps
             $table->timestamps();
         });
     }

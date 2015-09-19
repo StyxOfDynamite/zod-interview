@@ -13,10 +13,14 @@ class CreateFilesTable extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
+            //file details
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->binary('file');
+
+            //link on foreign key
+            $table->integer('candidate_id')->unsigned();
+
+            //timestamps
             $table->timestamps();
         });
     }

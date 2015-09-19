@@ -12,30 +12,30 @@
 */
 
 $app->get('/', function () use ($app) {
-    return redirect()->route('user.index');;
+    return redirect()->route('candidate.index');;
 });
 
-$app->get('user', [
-    'as' => 'user.index', 'uses' => 'UserController@index'
+$app->get('candidate', [
+    'as' => 'candidate.index', 'uses' => 'CandidateController@index'
 ]);
-$app->get('user/create', [
-    'as' => 'user.create', 'uses' => 'UserController@create'
+$app->get('candidate/create', [
+    'as' => 'candidate.create', 'uses' => 'CandidateController@create'
 ]);
-$app->post('user', [
-    'as' => 'user.store', 'uses' => 'UserController@store'
+$app->post('candidate', [
+    'as' => 'candidate.store', 'uses' => 'CandidateController@store'
 ]);
-$app->get('user/{id}/edit', [
-    'as' => 'user.edit', 'uses' => 'UserController@edit'
+$app->get('candidate/{id}/edit', [
+    'as' => 'candidate.edit', 'uses' => 'CandidateController@edit'
 ]);
-$app->patch('user/{id}', [
-    'as' => 'user.update', 'uses' => 'UserController@update'
+$app->patch('candidate/{id}', [
+    'as' => 'candidate.update', 'uses' => 'CandidateController@update'
 ]);
-$app->get('user/{id}/delete', [
-    'as' => 'user.delete', 'uses' => 'UserController@delete'
+$app->get('candidate/{id}/delete', [
+    'as' => 'candidate.delete', 'uses' => 'CandidateController@delete'
 ]);
-$app->delete('user/{id}', [
-    'as' => 'user.destroy', 'uses' => 'UserController@destroy'
+$app->delete('candidate/{id}', [
+    'as' => 'candidate.destroy', 'uses' => 'CandidateController@destroy'
 ]);
-$app->get('user/{id}', [
-    'as' => 'user.candidate', 'uses' => 'UserController@display'
+$app->get('candidate/{id}', [
+    'as' => 'candidate.candidate', 'uses' => 'CandidateController@display'
 ]);

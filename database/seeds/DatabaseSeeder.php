@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Salary;
+use Aoo\Models\File;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call('UserTableSeeder');
+        //
+        
 
         Model::reguard();
     }

@@ -1,0 +1,33 @@
+{
+  "name": "zero-one",
+  "version": "0.0.0",
+  "description": "Lumen based PHP application with MySQL databse, modelling candidate registration process for zero-one design technical interview.",
+  "main": "public/index.php",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "gulp": "~3.9.0",
+    "gulp-watch": "^4.3.5",
+    "phplint": "~1.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "phpunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/StyxOfDynamite/zod-interview.git"
+  },
+  "keywords": [
+    "lumen",
+    "laravel",
+    "php",
+    "mysql"
+  ],
+  "author": "lukes",
+  "license": "unlicense",
+  "bugs": {
+    "url": "https://github.com/StyxOfDynamite/zod-interview/issues"
+  }
+}

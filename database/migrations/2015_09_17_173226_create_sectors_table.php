@@ -13,8 +13,14 @@ class CreateSectorsTable extends Migration
     public function up()
     {
         Schema::create('sectors', function (Blueprint $table) {
-            $table->increments('id');
+            //sector details
+            $table->string('id')->unique();
             $table->string('sector', 20);
+
+            //link on foreign key
+            $table->integer('candidate_id')->unsigned();
+
+            //timestamps
             $table->timestamps();
         });
     }
