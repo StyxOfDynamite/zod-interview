@@ -32,9 +32,9 @@ class Candidate extends Model
     }
 
     /**
-     * @return [CandidateCountry] the candidates selected country
+     * @return [Country] the candidates selected country
      */
-    public function candidate_country() {
+    public function country() {
         return $this->hasOne('App\Models\Country');
     }
 
