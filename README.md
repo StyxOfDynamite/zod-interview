@@ -23,11 +23,18 @@ php artisan migrate
 * Server-side validation.
 * Password hashing.
 * Candidate removal.
+* Candidate profile.
+* File upload for resume / c.v.
+* Download candidate c.v / resume.
 * Session storage in database.
-* Candidate details edit.
 * CSRF mitigation via encrypted cookie.
-## Todo
 
-* Add sector(s) to registration form
-* Add country and selection region to registration form
-* Add file upload for resume / c.v
+## Todo
+* Add sector(s) to registration form.
+* Add salary expectation to registration form.
+* Updates to candidate
+
+## Proposed Enhancements
+* Candidates search / filter
+* Expose RESTful API to enable dynamic form elements via Ajax
+* Store multiple versions of user C.V / Resume
