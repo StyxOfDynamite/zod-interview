@@ -5,10 +5,12 @@ use App\Models\Country;
 use App\Models\Region;
 use App\Models\Salary;
 use App\Models\File;
-use App\Models\CandidateCountry;
+
+use GrahamCampbell\Flysystem\Facades\Flysystem as Flysystem;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 use Validator;
 use DB;
 use Log;
@@ -76,9 +78,14 @@ class CandidateController extends Controller {
         ]);
 
         $file = File::create([
-            'file' => $request->input('file'),
+            'file' => $request->file('file')->getClientOriginalName(),
             'candidate_id' => $candidate->id,
         ]);
+
+        Flysystem::put(
+            'app/'.$file->file,
+            file_get_contents($request->file('file'))
+        );
 
         return redirect()->route('candidate.index');
     }

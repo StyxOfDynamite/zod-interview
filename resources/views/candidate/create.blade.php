@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content')
-<form class="form-horizontal" role="form" method="POST" action="{{ route('candidate.store') }}">
+<form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{{ route('candidate.store') }}">
   <input type="text" name="_token" id="_token" class="hidden" value="{{ csrf_token() }}">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -58,9 +58,12 @@
           <p class="help-block">{{ ($errors->has('country') ? $errors->first('country') : '') }}</p>
         </div>
       </div>
+      
+      <!-- multi-select regions box -->
       <div class="form-group {{ ($errors->has('region')) ? 'has-error' : '' }}">
         <label class="col-sm-2 control-label">Regions</label>
-        <select name="regions[]" class="col-md-4 select-multiple-regions" multiple="multiple" style="width: 100%">
+        <div class="col-sm-10">
+          <select name="regions[]" class="col-md-4 form-control select-multiple-regions" multiple="multiple" style="width: 100%;">
             <option value="NW">North West</option>
             <option value="NE">North East</option>
             <option value="ML">Midlands</option>
@@ -69,44 +72,69 @@
             <option value="EA">East Anglia</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="skills" class="col-sm-2">Sector</label>
-          <select class="col-md-4 select-multiple-skills" multiple="multiple" style="width: 100%">
-            <option value="administraion">Administration</option>
-            <option value="cleaning">Cleaning</option>
-            <option value="networking">Networking</option>
-            <option value="juggling">Juggling</option>
-            <option value="unicycling">Unicycling</option>
-            <option value="hacking">Hacking</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Upload your Resume</label>
-          <div class="col-sm-10">
-            <input type="file" name="file" class="form-control">
-          </div>
-          </div
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Get job alerts</label>
-            <div class="col-sm-10">
-              <input type="checkbox" name="alerts" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="panel-footer">
-          <button type="submit" class="btn btn-sm btn-success btn-addon"><i class="glyphicon glyphicon-ok"></i>Create</button>
-          <a href="{{ route('candidate.index') }}" class="btn btn-default btn-sm btn-addon"><i class="glyphicon glyphicon-remove"></i>Cancel</a>
+      </div>
+
+      <!-- multiple checkboxes (inline) -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="checkboxes">Sectors</label>
+        <div class="col-md-4">
+          <label class="checkbox-inline" for="checkboxes-0">
+            <input type="checkbox" name="sectors[]" id="checkboxes-0" value="Parking">
+            Parking
+          </label>
+          <label class="checkbox-inline" for="checkboxes-1">
+            <input type="checkbox" name="sectors[]" id="checkboxes-1" value="Transport">
+            Transport
+          </label>
+          <label class="checkbox-inline" for="checkboxes-2">
+            <input type="checkbox" name="sectors[]" id="checkboxes-2" value="Hotel">
+            Hotel
+          </label>
+          <label class="checkbox-inline" for="checkboxes-3">
+            <input type="checkbox" name="sectors[]" id="checkboxes-3" value="Web Analyst">
+            Web Analyst
+          </label>
+          <label class="checkbox-inline" for="checkboxes-4">
+            <input type="checkbox" name="sectors[]" id="checkboxes-4" value="Project Management">
+            Project Management
+          </label>
+          <label class="checkbox-inline" for="checkboxes-5">
+            <input type="checkbox" name="sectors[]" id="checkboxes-5" value="Agile Development">
+            Agile Development
+          </label>
         </div>
       </div>
-    </form>
-    @endsection
-    <!-- page specific scripts to be injected into master.blade.php footer div -->
-    @section('footer')
-    <script type="text/javascript">
+      
+      <!-- file upload box -->
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Upload your Resume</label>
+        <div class="col-sm-10">
+          <input type="file" name="file" class="form-control">
+        </div>
+      </div>
+
+      <!-- toggle opt in to job alerts -->
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Get job alerts</label>
+        <div class="col-sm-10">
+          <input type="checkbox" name="alerts" class="form-control">
+        </div>
+      </div>
+
+      <!-- form panel footer - with submit button -->
+      <div class="panel-footer pull-right">
+        <button type="submit" class="btn btn-sm btn-success btn-addon"><i class="glyphicon glyphicon-ok"></i>Create</button>
+        <a href="{{ route('candidate.index') }}" class="btn btn-default btn-sm btn-addon"><i class="glyphicon glyphicon-remove"></i>Cancel</a>
+      </div>
+    </div>
+  </form>
+  @endsection
+  <!-- page specific scripts to be injected into master.blade.php footer div -->
+  @section('footer')
+  <script type="text/javascript">
     $(document).ready(function() {
-        /** multiple select  */
-        $('.select-multiple-regions').select2();
-        $('.select-multiple-skills').select2();
-      });
-</script>
-@endsection
+      /** multiple select  */
+      $('.select-multiple-regions').select2();
+    });
+  </script>
+  @endsection

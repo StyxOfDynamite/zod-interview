@@ -39,3 +39,6 @@ $app->delete('candidate/{id}', [
 $app->get('candidate/{id}', [
     'as' => 'candidate.candidate', 'uses' => 'CandidateController@display'
 ]);
+$app->get('file/{id}', [
+    'as' => 'file.download', 'uses' => 'FileController@getCandidateFile'
+]);
