@@ -3,4 +3,4 @@
 /.idea
 .DS_Store
 mysql_dump.txt
-node_modules/
+/node_modules
