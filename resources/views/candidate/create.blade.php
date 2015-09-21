@@ -49,6 +49,34 @@
           <p class="help-block">{{ ($errors->has('right_to_work') ? $errors->first('right_to_work') : '') }}</p>
         </div>
       </div>
+      
+      <!-- salary details -->
+      <div class="form-horizontal">
+        <div class="form-group row">
+          <label class="col-sm-2 control-label">Current Salary</label>
+          <div class="col-sm-1">
+            <select name="currency">
+              <option value="USD">&dollar;</option>
+              <option value="GBP">&pound;</option>
+              <option value="EUR">&euro;</option>
+            </select>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" class="form-contol" name="salary">
+            </div>
+            <div class="col-sm-3">
+              <select name="interval" class="form-control">
+                <option value="week">per week</option>
+                <option value="month">per month</option>
+                <option value="annum">per year</option>
+              </select>
+            </div>
+            <p class="help-block">{{ ($errors->has('right_to_work') ? $errors->first('right_to_work') : '') }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- country details -->
       <div class="form-group {{ ($errors->has('country')) ? 'has-error' : '' }}">
         <label class="col-sm-2 control-label">Country</label>
         <div class="col-sm-10">
@@ -58,7 +86,7 @@
           <p class="help-block">{{ ($errors->has('country') ? $errors->first('country') : '') }}</p>
         </div>
       </div>
-      
+
       <!-- multi-select regions box -->
       <div class="form-group {{ ($errors->has('region')) ? 'has-error' : '' }}">
         <label class="col-sm-2 control-label">Regions</label>
@@ -104,7 +132,7 @@
           </label>
         </div>
       </div>
-      
+
       <!-- file upload box -->
       <div class="form-group">
         <label class="col-sm-2 control-label">Upload your Resume</label>

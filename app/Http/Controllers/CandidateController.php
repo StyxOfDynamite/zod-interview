@@ -79,9 +79,9 @@ class CandidateController extends Controller {
         }
 
         $salary = Salary::create([
-            'currency' => 'USD',
-            'salary' => 26000,
-            'interval' => 'per month',
+            'currency' => $request->input('currency'),
+            'salary' => $request->input('salary'),
+            'interval' => $request->input('interval'),
             'candidate_id' => $candidate->id,
         ]);
 
