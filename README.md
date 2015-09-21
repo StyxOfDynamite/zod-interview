@@ -28,11 +28,10 @@ php artisan migrate
 * Download candidate c.v / resume.
 * Session storage in database.
 * CSRF mitigation via encrypted cookie.
+* Add sector(s) to registration form.
+* Add salary expectation to registration for
 
 ## Todo
-* Add sector(s) to registration form.
-* Add salary expectation to registration form.
-* Updates to candidate
 * Candidate profile needs some UI loving.
 
 ## Proposed Enhancements
