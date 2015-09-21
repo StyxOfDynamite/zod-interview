@@ -24,7 +24,6 @@
                         <td>{{ $candidate->surname }}</td>
                         <td>{{ $candidate->contact_number }}
                         <td>
-                            <a href="{{ route('candidate.edit', ['id' => $candidate->id]) }}" class="btn btn-info btn-sm">Edit</a>
                             <a href="{{ route('candidate.delete', ['id' => $candidate->id]) }}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>

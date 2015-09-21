@@ -9,8 +9,17 @@
     <p>{{ $candidate->country->country }}</p>
     <ul class="region-list">
         @foreach($candidate->country->regions as $region)
-        <li class="region">{{ $region->region }}</li>
+        <li class="region">
+            {{ $region->region }}
+        </li>
         @endforeach
+    </ul>
+    <ul class="sectors-list">
+        @foreach($candidate->sectors as $sector)
+        <li class="sector">
+            {{ $sector->sector }}
+        </li>
+         @endforeach
     </ul>
     <p>{{ $candidate->salary->currency . ' ' . $candidate->salary->salary . ' ' . $candidate->salary->interval }}</p>
     <a href="{{ route('file.download', ['id' => $candidate->id]) }}" class="btn btn-sm btn-success btn-addon">

@@ -24,12 +24,6 @@ $app->get('candidate/create', [
 $app->post('candidate', [
     'as' => 'candidate.store', 'uses' => 'CandidateController@store'
 ]);
-$app->get('candidate/{id}/edit', [
-    'as' => 'candidate.edit', 'uses' => 'CandidateController@edit'
-]);
-$app->patch('candidate/{id}', [
-    'as' => 'candidate.update', 'uses' => 'CandidateController@update'
-]);
 $app->get('candidate/{id}/delete', [
     'as' => 'candidate.delete', 'uses' => 'CandidateController@delete'
 ]);

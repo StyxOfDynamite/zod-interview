@@ -79,27 +79,27 @@
         <label class="col-md-4 control-label" for="checkboxes">Sectors</label>
         <div class="col-md-4">
           <label class="checkbox-inline" for="checkboxes-0">
-            <input type="checkbox" name="sectors[]" id="checkboxes-0" value="Parking">
+            <input type="checkbox" name="skills[]" id="checkboxes-0" value="Parking">
             Parking
           </label>
           <label class="checkbox-inline" for="checkboxes-1">
-            <input type="checkbox" name="sectors[]" id="checkboxes-1" value="Transport">
+            <input type="checkbox" name="skills[]" id="checkboxes-1" value="Transport">
             Transport
           </label>
           <label class="checkbox-inline" for="checkboxes-2">
-            <input type="checkbox" name="sectors[]" id="checkboxes-2" value="Hotel">
+            <input type="checkbox" name="skills[]" id="checkboxes-2" value="Hotel">
             Hotel
           </label>
           <label class="checkbox-inline" for="checkboxes-3">
-            <input type="checkbox" name="sectors[]" id="checkboxes-3" value="Web Analyst">
+            <input type="checkbox" name="skills[]" id="checkboxes-3" value="Web Analyst">
             Web Analyst
           </label>
           <label class="checkbox-inline" for="checkboxes-4">
-            <input type="checkbox" name="sectors[]" id="checkboxes-4" value="Project Management">
+            <input type="checkbox" name="skills[]" id="checkboxes-4" value="Project Management">
             Project Management
           </label>
           <label class="checkbox-inline" for="checkboxes-5">
-            <input type="checkbox" name="sectors[]" id="checkboxes-5" value="Agile Development">
+            <input type="checkbox" name="skills[]" id="checkboxes-5" value="Agile Development">
             Agile Development
           </label>
         </div>
