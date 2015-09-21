@@ -5,6 +5,7 @@ use App\Models\Country;
 use App\Models\Region;
 use App\Models\Salary;
 use App\Models\File;
+use App\Models\Sector;
 
 use GrahamCampbell\Flysystem\Facades\Flysystem as Flysystem;
 
@@ -67,6 +68,13 @@ class CandidateController extends Controller {
             $region = Region::create([
                 'region' => $value,
                 'country_id' => $country->id
+                ]);
+        }
+
+        foreach ($request->input('skills') as $key => $value) {
+            $sector = Sector::create([
+                'sector' => $value,
+                'candidate_id' => $candidate->id
                 ]);
         }
 

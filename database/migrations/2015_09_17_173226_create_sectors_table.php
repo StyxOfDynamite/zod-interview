@@ -14,7 +14,7 @@ class CreateSectorsTable extends Migration
     {
         Schema::create('sectors', function (Blueprint $table) {
             //sector details
-            $table->string('id')->unique();
+            $table->increments('id');
             $table->string('sector', 20);
 
             //link on foreign key
