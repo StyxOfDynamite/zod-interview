@@ -36,3 +36,6 @@ $app->get('candidate/{id}', [
 $app->get('file/{id}', [
     'as' => 'file.download', 'uses' => 'FileController@getCandidateFile'
 ]);
+$app->get('alert/{id}', [
+    'as' => 'alert.alert', 'uses' =>'AlertController@displayCandidateAlerts'
+]);

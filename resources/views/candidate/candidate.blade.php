@@ -27,4 +27,9 @@
     </a>
     <p>{{ $candidate->alerts }}</p>
 </div>
+<div class="alert-details">
+<a href="{{ route('alert.alert', ['id' => $candidate->id]) }}" class="btn btn-sm btn-default btn-addon">
+    Alerts
+</a>
+</div>
 @endsection

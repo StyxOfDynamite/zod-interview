@@ -6,6 +6,12 @@ use App\Models\Region;
 use App\Models\Salary;
 use App\Models\File;
 use App\Models\Sector;
+use App\Models\Alert;
+use App\Models\AlertCountry;
+use App\Models\AlertRegion;
+use App\Models\AlertSalary;
+use App\Models\AlertSector;
+
 
 use GrahamCampbell\Flysystem\Facades\Flysystem as Flysystem;
 
@@ -96,7 +102,7 @@ class CandidateController extends Controller {
             );
 
         /** create alert */
-        if ($request->input('alerts') ? true) {
+        if ($request->input('alerts')) {
             $alert = new Alert;
             $alert->candidate_id = $candidate->id;
             $alert->save();
@@ -106,10 +112,10 @@ class CandidateController extends Controller {
                 'currency' => $request->input('alert-salary-currency'),
                 'salary' => $request->input('alert-salary'),
                 'interval' => $request->input('alert-salary-interval'),
-                'alert' => $alert->id
+                'alert_id' => $alert->id
                 ]);
             /* add alert country */
-            $alert_country = ALertCountry::create([
+            $alert_country = AlertCountry::create([
                 'alert_id' => $alert->id,
                 'country' => $request->input('alert-country')
                 ]);
@@ -168,8 +174,7 @@ class CandidateController extends Controller {
 
     public function display($id) {
         $candidate = Candidate::find($id);
-        $candidate_country = Candidate::find($id)->candidate_country;
-        return view('candidate.candidate', ['candidate' => $candidate, 'candidate_country' => $candidate_country]);
+        return view('candidate.candidate', ['candidate' => $candidate]);
     }
 
 }
