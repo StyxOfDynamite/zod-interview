@@ -16,8 +16,8 @@ class CreateSalariesTable extends Migration
             //salary details
             $table->increments('id');
             $table->string('currency', 4);
-            $table->integer('salary');
-            $table->string('interval', 15);
+            $table->float('salary');
+            $table->enum('interval', ['hour', 'week', 'month', 'year']);
 
             //link on foreign key
             $table->integer('candidate_id')->unsigned();
