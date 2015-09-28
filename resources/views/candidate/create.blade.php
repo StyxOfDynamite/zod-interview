@@ -60,38 +60,113 @@
               <option value="GBP">&pound;</option>
               <option value="EUR">&euro;</option>
             </select>
-            </div>
-            <div class="col-sm-3">
-              <input type="text" class="form-contol" name="salary">
-            </div>
-            <div class="col-sm-3">
-              <select name="interval" class="form-control">
-                <option value="week">per week</option>
-                <option value="month">per month</option>
-                <option value="annum">per year</option>
-              </select>
-            </div>
-            <p class="help-block">{{ ($errors->has('right_to_work') ? $errors->first('right_to_work') : '') }}</p>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-contol" name="salary">
+          </div>
+          <div class="col-sm-3">
+            <select name="interval" class="form-control">
+              <option value="hour">per hour</option>
+              <option value="week">per week</option>
+              <option value="month">per month</option>
+              <option value="year">per year</option>
+            </select>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- country details -->
+    <div class="form-group {{ ($errors->has('country')) ? 'has-error' : '' }}">
+      <label class="col-sm-2 control-label">Country</label>
+      <div class="col-sm-10">
+        <select name="country" id="country" class="form-control">
+          <option value="England" selected="">England</option>
+        </select>
+        <p class="help-block">{{ ($errors->has('country') ? $errors->first('country') : '') }}</p>
+      </div>
+    </div>
+
+    <!-- multi-select regions box -->
+    <div class="form-group {{ ($errors->has('region')) ? 'has-error' : '' }}">
+      <label class="col-sm-2 control-label">Regions</label>
+      <div class="col-sm-10">
+        <select name="regions[]" class="col-md-4 form-control select-multiple-regions" multiple="multiple" style="width: 100%;">
+          <option value="NW">North West</option>
+          <option value="NE">North East</option>
+          <option value="ML">Midlands</option>
+          <option value="SW">South West</option>
+          <option value="SE">South East</option>
+          <option value="EA">East Anglia</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- multiple checkboxes (inline) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="checkboxes">Sectors</label>
+      <div class="col-md-4">
+        <label class="checkbox-inline" for="checkboxes-0">
+          <input type="checkbox" name="skills[]" id="checkboxes-0" value="Parking">
+          Parking
+        </label>
+        <label class="checkbox-inline" for="checkboxes-1">
+          <input type="checkbox" name="skills[]" id="checkboxes-1" value="Transport">
+          Transport
+        </label>
+        <label class="checkbox-inline" for="checkboxes-2">
+          <input type="checkbox" name="skills[]" id="checkboxes-2" value="Hotel">
+          Hotel
+        </label>
+        <label class="checkbox-inline" for="checkboxes-3">
+          <input type="checkbox" name="skills[]" id="checkboxes-3" value="Web Analyst">
+          Web Analyst
+        </label>
+        <label class="checkbox-inline" for="checkboxes-4">
+          <input type="checkbox" name="skills[]" id="checkboxes-4" value="Project Management">
+          Project Management
+        </label>
+        <label class="checkbox-inline" for="checkboxes-5">
+          <input type="checkbox" name="skills[]" id="checkboxes-5" value="Agile Development">
+          Agile Development
+        </label>
+      </div>
+    </div>
+
+    <!-- file upload box -->
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Upload your Resume</label>
+      <div class="col-sm-10">
+        <input type="file" name="file" class="form-control">
+      </div>
+    </div>
+
+    <!-- toggle opt in to job alerts -->
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Get job alerts</label>
+      <div class="col-sm-10">
+        <input type="checkbox" id="alerts" name="alerts" class="form-control">
+      </div>
+    </div>
+
+    <!-- alert settings -->
+    <div class="alert-settings">
 
       <!-- country details -->
-      <div class="form-group {{ ($errors->has('country')) ? 'has-error' : '' }}">
-        <label class="col-sm-2 control-label">Country</label>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Alert - Country</label>
         <div class="col-sm-10">
-          <select name="country" id="country" class="form-control">
+          <select name="alert-country" id="country" class="form-control">
             <option value="England" selected="">England</option>
           </select>
-          <p class="help-block">{{ ($errors->has('country') ? $errors->first('country') : '') }}</p>
         </div>
       </div>
 
       <!-- multi-select regions box -->
-      <div class="form-group {{ ($errors->has('region')) ? 'has-error' : '' }}">
-        <label class="col-sm-2 control-label">Regions</label>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Alert - Regions</label>
         <div class="col-sm-10">
-          <select name="regions[]" class="col-md-4 form-control select-multiple-regions" multiple="multiple" style="width: 100%;">
+          <select name="alert-regions[]" class="col-md-4 form-control select-alert-regions" multiple="multiple" style="width: 100%;">
             <option value="NW">North West</option>
             <option value="NE">North East</option>
             <option value="ML">Midlands</option>
@@ -107,62 +182,77 @@
         <label class="col-md-4 control-label" for="checkboxes">Sectors</label>
         <div class="col-md-4">
           <label class="checkbox-inline" for="checkboxes-0">
-            <input type="checkbox" name="skills[]" id="checkboxes-0" value="Parking">
+            <input type="checkbox" name="alert-skills[]" id="checkboxes-0" value="Parking">
             Parking
           </label>
           <label class="checkbox-inline" for="checkboxes-1">
-            <input type="checkbox" name="skills[]" id="checkboxes-1" value="Transport">
+            <input type="checkbox" name="alert-skills[]" id="checkboxes-1" value="Transport">
             Transport
           </label>
           <label class="checkbox-inline" for="checkboxes-2">
-            <input type="checkbox" name="skills[]" id="checkboxes-2" value="Hotel">
+            <input type="checkbox" name="alert-skills[]" id="checkboxes-2" value="Hotel">
             Hotel
           </label>
           <label class="checkbox-inline" for="checkboxes-3">
-            <input type="checkbox" name="skills[]" id="checkboxes-3" value="Web Analyst">
+            <input type="checkbox" name="alert-skills[]" id="checkboxes-3" value="Web Analyst">
             Web Analyst
           </label>
           <label class="checkbox-inline" for="checkboxes-4">
-            <input type="checkbox" name="skills[]" id="checkboxes-4" value="Project Management">
+            <input type="checkbox" name="alert-skills[]" id="checkboxes-4" value="Project Management">
             Project Management
           </label>
           <label class="checkbox-inline" for="checkboxes-5">
-            <input type="checkbox" name="skills[]" id="checkboxes-5" value="Agile Development">
+            <input type="checkbox" name="alert-skills[]" id="checkboxes-5" value="Agile Development">
             Agile Development
           </label>
         </div>
       </div>
-
-      <!-- file upload box -->
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Upload your Resume</label>
-        <div class="col-sm-10">
-          <input type="file" name="file" class="form-control">
+      <div class="form-group row">
+        <label class="col-sm-2 control-label">Salary</label>
+        <div class="col-sm-1">
+          <select name="alert-salary-currency">
+            <option value="USD">&dollar;</option>
+            <option value="GBP">&pound;</option>
+            <option value="EUR">&euro;</option>
+          </select>
         </div>
-      </div>
-
-      <!-- toggle opt in to job alerts -->
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Get job alerts</label>
-        <div class="col-sm-10">
-          <input type="checkbox" name="alerts" class="form-control">
+        <div class="col-sm-3">
+          <input type="text" class="form-contol" name="alert-salary">
         </div>
-      </div>
-
-      <!-- form panel footer - with submit button -->
-      <div class="panel-footer pull-right">
-        <button type="submit" class="btn btn-sm btn-success btn-addon"><i class="glyphicon glyphicon-ok"></i>Create</button>
-        <a href="{{ route('candidate.index') }}" class="btn btn-default btn-sm btn-addon"><i class="glyphicon glyphicon-remove"></i>Cancel</a>
+        <div class="col-sm-3">
+          <select name="alert-salary-interval" class="form-control">
+            <option value="hour">per hour</option>
+            <option value="week">per week</option>
+            <option value="month">per month</option>
+            <option value="year">per year</option>
+          </select>
+        </div>
       </div>
     </div>
-  </form>
-  @endsection
-  <!-- page specific scripts to be injected into master.blade.php footer div -->
-  @section('footer')
-  <script type="text/javascript">
-    $(document).ready(function() {
-      /** multiple select  */
-      $('.select-multiple-regions').select2();
+  </div>
+
+  <!-- form panel footer - with submit button -->
+  <div class="panel-footer pull-right">
+    <button type="submit" class="btn btn-sm btn-success btn-addon"><i class="glyphicon glyphicon-ok"></i>Create</button>
+    <a href="{{ route('candidate.index') }}" class="btn btn-default btn-sm btn-addon"><i class="glyphicon glyphicon-remove"></i>Cancel</a>
+  </div>
+</div>
+</form>
+
+@endsection
+<!-- page specific scripts to be injected into master.blade.php footer div -->
+@section('footer')
+<script type="text/javascript">
+  $(document).ready(function() {
+    /** multiple select  */
+    $('.select-multiple-regions').select2();
+    $('.select-alert-regions').select2();
+
+    $('.alert-settings').toggle();
+
+    $('#alerts').click(function() {
+      $('.alert-settings').toggle();
     });
-  </script>
-  @endsection
+  });
+</script>
+@endsection
