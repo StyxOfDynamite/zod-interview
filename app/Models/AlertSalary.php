@@ -18,9 +18,9 @@ class AlertSalary extends Model
     protected $table = 'alert_salaries';
 
     /**
-     * @return [Alert] the candidate this file belongs to
+     * @return [Alert] the salary this alert belongs to
      */
-    public function candidate()
+    public function alert()
     {
         return $this->belongsTo('App\Models\Alert');
     }

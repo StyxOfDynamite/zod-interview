@@ -43,5 +43,13 @@ class Candidate extends Model
         return $this->hasOne('App\Models\Salary');
     }
 
+    /**
+     * @return [Alerts] the alerts this candidate has configured
+     */
+    public function alerts()
+    {
+        return $this->hasMany('App\Models\Alert');
+    }
+
 
 }

@@ -32,7 +32,7 @@ class CandidateController extends Controller {
     }
 
     public function store(Request $request) {
-        
+
         Log::info('storing candidate profile for candidate:' . $request->input('forename'));
 
         $validator = Validator::make($request->all(), [
@@ -43,7 +43,7 @@ class CandidateController extends Controller {
             'file' => 'required',
             'country' => 'required',
 
-        ]);
+            ]);
         if ($validator->fails()) {
             Log::warning('validator failed, redirecting to entry form');
             return redirect()->back()->withErrors($validator)->withInput();
@@ -83,17 +83,55 @@ class CandidateController extends Controller {
             'salary' => $request->input('salary'),
             'interval' => $request->input('interval'),
             'candidate_id' => $candidate->id,
-        ]);
+            ]);
 
         $file = File::create([
             'file' => $request->file('file')->getClientOriginalName(),
             'candidate_id' => $candidate->id,
-        ]);
+            ]);
 
         Flysystem::put(
             'app/'.$file->file,
             file_get_contents($request->file('file'))
-        );
+            );
+
+        /** create alert */
+        if ($request->input('alerts') ? true) {
+            $alert = new Alert;
+            $alert->candidate_id = $candidate->id;
+            $alert->save();
+
+            /* add alert salary expectations */
+            $alert_salary = AlertSalary::create([
+                'currency' => $request->input('alert-salary-currency'),
+                'salary' => $request->input('alert-salary'),
+                'interval' => $request->input('alert-salary-interval'),
+                'alert' => $alert->id
+                ]);
+            /* add alert country */
+            $alert_country = ALertCountry::create([
+                'alert_id' => $alert->id,
+                'country' => $request->input('alert-country')
+                ]);
+
+            /* add regions for alert */
+            foreach ($request->input('alert-regions') as $key => $value) {
+                $alert_region = AlertRegion::create([
+                    'region' => $value,
+                    'alert_country_id' => $alert_country->id
+                    ]);
+            }
+
+            /* add sectors for alert */
+            foreach ($request->input('skills') as $key => $value) {
+                $alert_sector = AlertSector::create([
+                    'sector' => $value,
+                    'alert_id' => $alert->id
+                    ]);
+            }
+
+
+        }
 
         return redirect()->route('candidate.index');
     }
@@ -106,7 +144,7 @@ class CandidateController extends Controller {
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-        ]);
+            ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }

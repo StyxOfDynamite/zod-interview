@@ -5,8 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Alert extends Model
-{
-    
+{   
+    /**
+     * @return [Candidate] the candidate this alert belongs to
+     */
+    public function candidate()
+    {
+        return $this->belongsTo('App\Models\Candidate');
+    }
     
     /**
      * @return [Sector] the candidates selected sectors
